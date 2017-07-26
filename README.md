@@ -1,5 +1,5 @@
 # file-to-ldap-lookup
->Open a delimited file. Lookup LDAP data based on a field in the file. Output the data to a file or console."
+>"Open a delimited file. Lookup LDAP data based on a field in the file. Output the data to a file or console." - customer
 
 The scenario I built includes:
 
