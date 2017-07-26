@@ -1,0 +1,134 @@
+<custom__type__definition>
+  <version>5.2.0.0</version>
+  <typeName class="org.mule.common.metadata.DefaultMetaDataKey">
+    <id>studentCSV</id>
+    <displayName>studentCSV</displayName>
+    <category>DEFAULT</category>
+    <metaDataKeyPropertiesManager>
+      <properties>
+        <org.mule.common.metadata.key.property.dsql.DsqlFromMetaDataKeyProperty/>
+      </properties>
+    </metaDataKeyPropertiesManager>
+  </typeName>
+  <metadataModel class="org.mule.common.metadata.DefaultListMetaDataModel">
+    <dataType>LIST</dataType>
+    <metaDataModelPropertiesManager>
+      <properties/>
+    </metaDataModelPropertiesManager>
+    <model class="org.mule.common.metadata.DefaultStructuredMetadataModel">
+      <dataType>CSV</dataType>
+      <metaDataModelPropertiesManager>
+        <properties>
+          <org.mule.common.metadata.property.CSVHasHeadersMetaDataProperty>
+            <hasHeaders>true</hasHeaders>
+          </org.mule.common.metadata.property.CSVHasHeadersMetaDataProperty>
+        </properties>
+      </metaDataModelPropertiesManager>
+      <fields>
+        <org.mule.common.metadata.DefaultMetaDataField>
+          <name>name</name>
+          <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+            <dataType>STRING</dataType>
+            <metaDataModelPropertiesManager>
+              <properties/>
+            </metaDataModelPropertiesManager>
+          </model>
+          <accessType>READ</accessType>
+          <metaDataFieldPropertyManager>
+            <properties>
+              <org.mule.common.metadata.property.LabelMetaDataProperty>
+                <label>name</label>
+              </org.mule.common.metadata.property.LabelMetaDataProperty>
+            </properties>
+          </metaDataFieldPropertyManager>
+        </org.mule.common.metadata.DefaultMetaDataField>
+        <org.mule.common.metadata.DefaultMetaDataField>
+          <name>street address</name>
+          <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+            <dataType>STRING</dataType>
+            <metaDataModelPropertiesManager>
+              <properties/>
+            </metaDataModelPropertiesManager>
+          </model>
+          <accessType>READ</accessType>
+          <metaDataFieldPropertyManager>
+            <properties>
+              <org.mule.common.metadata.property.LabelMetaDataProperty>
+                <label>street address</label>
+              </org.mule.common.metadata.property.LabelMetaDataProperty>
+            </properties>
+          </metaDataFieldPropertyManager>
+        </org.mule.common.metadata.DefaultMetaDataField>
+        <org.mule.common.metadata.DefaultMetaDataField>
+          <name>city address</name>
+          <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+            <dataType>STRING</dataType>
+            <metaDataModelPropertiesManager>
+              <properties/>
+            </metaDataModelPropertiesManager>
+          </model>
+          <accessType>READ</accessType>
+          <metaDataFieldPropertyManager>
+            <properties>
+              <org.mule.common.metadata.property.LabelMetaDataProperty>
+                <label>city address</label>
+              </org.mule.common.metadata.property.LabelMetaDataProperty>
+            </properties>
+          </metaDataFieldPropertyManager>
+        </org.mule.common.metadata.DefaultMetaDataField>
+        <org.mule.common.metadata.DefaultMetaDataField>
+          <name>state</name>
+          <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+            <dataType>STRING</dataType>
+            <metaDataModelPropertiesManager>
+              <properties/>
+            </metaDataModelPropertiesManager>
+          </model>
+          <accessType>READ</accessType>
+          <metaDataFieldPropertyManager>
+            <properties>
+              <org.mule.common.metadata.property.LabelMetaDataProperty>
+                <label>state</label>
+              </org.mule.common.metadata.property.LabelMetaDataProperty>
+            </properties>
+          </metaDataFieldPropertyManager>
+        </org.mule.common.metadata.DefaultMetaDataField>
+        <org.mule.common.metadata.DefaultMetaDataField>
+          <name>zip</name>
+          <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+            <dataType>STRING</dataType>
+            <metaDataModelPropertiesManager>
+              <properties/>
+            </metaDataModelPropertiesManager>
+          </model>
+          <accessType>READ</accessType>
+          <metaDataFieldPropertyManager>
+            <properties>
+              <org.mule.common.metadata.property.LabelMetaDataProperty>
+                <label>zip</label>
+              </org.mule.common.metadata.property.LabelMetaDataProperty>
+            </properties>
+          </metaDataFieldPropertyManager>
+        </org.mule.common.metadata.DefaultMetaDataField>
+        <org.mule.common.metadata.DefaultMetaDataField>
+          <name>studentID</name>
+          <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+            <dataType>STRING</dataType>
+            <metaDataModelPropertiesManager>
+              <properties/>
+            </metaDataModelPropertiesManager>
+          </model>
+          <accessType>READ</accessType>
+          <metaDataFieldPropertyManager>
+            <properties>
+              <org.mule.common.metadata.property.LabelMetaDataProperty>
+                <label>studentID</label>
+              </org.mule.common.metadata.property.LabelMetaDataProperty>
+            </properties>
+          </metaDataFieldPropertyManager>
+        </org.mule.common.metadata.DefaultMetaDataField>
+      </fields>
+    </model>
+    <isArray>false</isArray>
+  </metadataModel>
+</custom__type__definition>

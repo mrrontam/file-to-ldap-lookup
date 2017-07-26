@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "studentLDAP"
+        }
+    },
+    "id": "c1eaaf42-9bca-46e5-81fd-be48f530420f",
+    "version": "5.2.0.0"
+}

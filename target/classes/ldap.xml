@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata"  xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:context="http://www.springframework.org/schema/context" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:ldap="http://www.mulesoft.org/schema/mule/ldap" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ldap http://www.mulesoft.org/schema/mule/ldap/current/mule-ldap.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+    <ldap:config authDn="${ldap.dn}" authPassword="${ldap.password}" doc:name="LDAP" name="LDAP" url="${ldap.url}" initialPoolSize="0">
+        <reconnect/>
+    </ldap:config>
+    <file:connector name="File" autoDelete="true" outputAppend="true" streaming="false" validateConnections="true" doc:name="File"/>
+    <context:property-placeholder location="mule-app.properties"/>
+    <flow name="ldapLookupFlow">
+        <file:inbound-endpoint path="${pollfile.path}" moveToDirectory="${pollarchive.path}" responseTimeout="10000" mimeType="application/csv" doc:name="Poll File" metadata:id="82dec8da-2236-4944-8ae7-4a63c1ddb78a"/>
+        <dw:transform-message doc:name="CSV to Object" metadata:id="adc4f004-6a64-4561-8b8b-a12a3f8e9bd5">
+            <dw:input-payload doc:sample="sample_data/list_csv.csv"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload map ((payload01 , indexOfPayload01) -> {
+	name: payload01.name,
+	street: payload01."street address",
+	city: payload01."city address",
+	state: payload01.state,
+	zip: payload01.zip,
+	studentID: payload01.studentID
+})]]></dw:set-payload>
+        </dw:transform-message>
+        <foreach doc:name="For Each">
+            <set-variable variableName="CSVrecord" value="#[payload]" doc:name="Variable"/>
+            <ldap:search config-ref="LDAP" baseDn="ou=people" filter="(cn=#[payload.name])" doc:name="LDAP"/>
+            <dw:transform-message doc:name="Transform Message" metadata:id="25ed0e63-8c9d-404e-b76d-a8afdd6b1876">
+                <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+payload map ((payload01 , indexOfPayload01) -> {
+	name: flowVars.CSVrecord.name,
+	street: flowVars.CSVrecord.street,
+	city: flowVars.CSVrecord.city,
+	state: flowVars.CSVrecord.state,
+	zip: flowVars.CSVrecord.zip,
+	studentID: flowVars.CSVrecord.studentID,
+	cn: payload01.cn,
+	LDAPuid: payload01.uid,
+	password: payload01.userPassword
+})
+]]></dw:set-payload>
+            </dw:transform-message>
+            <file:outbound-endpoint path="${outputfile.path}" outputPattern="${outputfile.name}" tracking:enable-default-events="true" responseTimeout="10000" doc:name="File" connector-ref="File"/>
+            <logger message="Payload:  #[payload]" level="INFO" doc:name="Logger"/>
+        </foreach>
+    </flow>
+</mule>

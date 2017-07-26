@@ -1,0 +1,71 @@
+version: 1
+
+dn: dc=example,dc=org
+objectClass: organization
+objectClass: dcObject
+dc: example
+o: Example Inc.
+description: The Example Inc.
+
+dn: cn=Manager,dc=example,dc=org
+objectClass: organizationalRole
+cn: Manager
+description: Directory Manager
+
+dn: ou=groups,dc=example,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: groups
+
+dn: ou=people,dc=example,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: people
+
+dn: cn=Administrators,ou=groups,dc=example,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: Administrators
+member: cn=admin,ou=people,dc=example,dc=org
+
+dn: cn=admin,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: admin
+sn: admin
+uid: admin
+userPassword:: bW1jYWRtaW4=
+
+dn: cn=Developers,ou=groups,dc=example,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: Developers
+member: cn=admin,ou=people,dc=example,dc=org
+
+dn: cn=testuser1,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: testuser1
+sn: testuser1
+uid: testuser1
+userPassword:: dGVzdHVzZXIxMTIz
+
+dn: cn=mmc,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: mmc
+sn: mmc
+uid: mmc
+userPassword:: bW1jMTIz
+
+dn: cn=testgroup,ou=groups,dc=example,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: testgroup
+member: cn=testuser1,ou=people,dc=example,dc=org

@@ -1,0 +1,101 @@
+version: 1
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.335
+dn: dc=example,dc=org
+objectClass: organization
+objectClass: dcObject
+dc: example
+o: Example Inc.
+description: The Example Inc.
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.340
+dn: cn=Manager,dc=example,dc=org
+objectClass: organizationalRole
+cn: Manager
+description: Directory Manager
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.344
+dn: ou=groups,dc=example,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: groups
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.349
+dn: ou=people,dc=example,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: people
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.356
+dn: cn=Administrators,ou=groups,dc=example,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: Administrators
+member: cn=admin,ou=people,dc=example,dc=org
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.366
+dn: cn=admin,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: admin
+sn: admin
+uid: admin
+userPassword:: bW1jYWRtaW4=
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.372
+dn: cn=Developers,ou=groups,dc=example,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: Developers
+member: cn=admin,ou=people,dc=example,dc=org
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.378
+dn: cn=testuser1,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: testuser1
+sn: testuser1
+uid: testuser1
+userPassword:: dGVzdHVzZXIxMTIz
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.386
+dn: cn=mmc,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: mmc
+sn: mmc
+uid: mmc
+userPassword:: bW1jMTIz
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2017-07-25T09:49:09.392
+dn: cn=testgroup,ou=groups,dc=example,dc=org
+objectClass: top
+objectClass: groupOfNames
+cn: testgroup
+member: cn=testuser1,ou=people,dc=example,dc=org

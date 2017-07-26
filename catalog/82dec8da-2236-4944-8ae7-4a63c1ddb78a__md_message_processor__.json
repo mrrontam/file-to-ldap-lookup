@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "studentCSV"
+        }
+    },
+    "id": "82dec8da-2236-4944-8ae7-4a63c1ddb78a",
+    "version": "5.2.0.0"
+}
