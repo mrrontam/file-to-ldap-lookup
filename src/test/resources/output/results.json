@@ -1,0 +1,37 @@
+[
+  {
+    "name": "admin",
+    "street": "123 main street",
+    "city": "portland",
+    "state": "ME",
+    "zip": "02222",
+    "studentID": "admin",
+    "cn": "admin",
+    "LDAPuid": "admin4321",
+    "password": "mmcadmin"
+  }
+][
+  {
+    "name": "mmc",
+    "street": "321 main street",
+    "city": "augusta",
+    "state": "ME",
+    "zip": "02223",
+    "studentID": "mmc",
+    "cn": "mmc",
+    "LDAPuid": "mmc1234",
+    "password": "mmc123"
+  }
+][
+  {
+    "name": "testuser1",
+    "street": "456 front street",
+    "city": "biddeford",
+    "state": "ME",
+    "zip": "02332",
+    "studentID": "testuser1",
+    "cn": "testuser1",
+    "LDAPuid": "testuser16628",
+    "password": "testuser1123"
+  }
+]
